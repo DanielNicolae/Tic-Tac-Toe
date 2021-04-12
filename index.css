@@ -16,3 +16,39 @@ td {
   border: 1px solid rgb(0,0,0);
   
 }
+
+#winner {
+  text-align: center;
+  margin: 2em 0 1em 0;
+  font-size: 1em;
+}
+
+@media screen and (min-width:350px) {
+  #winner {
+    font-size: 2em;
+  }
+}
+
+@media screen and (min-width:550px) {
+  #winner {
+    font-size: 3em;
+  }
+}
+
+@media screen and (min-width:750px) {
+  #winner {
+    font-size: 3.5em;
+  }
+}
+
+@media screen and (min-width:950px) {
+  #winner {
+    font-size: 4em;
+  }
+}
+
+@media screen and (min-width:1300px) {
+  #winner {
+    font-size: 5em;
+  }
+}
