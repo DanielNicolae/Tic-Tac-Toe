@@ -52,6 +52,9 @@ const grid = (function () {
       ((x2y0.textContent === x2y1.textContent && x2y1.textContent === x2y2.textContent) ||
         (x2y0.textContent === x1y1.textContent && x1y1.textContent === x0y2.textContent))) {
       winner.textContent = `Player ${x2y0.textContent} won!`;
+    } else if (x0y0.textContent !== "#" && x0y1.textContent !== "#" && x0y2.textContent !== "#" && x1y0.textContent !== "#" &&
+      x1y1.textContent !== "#" && x1y2.textContent !== "#" && x2y0.textContent !== "#" && x2y1.textContent !== "#" && x2y2.textContent !== "#") {
+      winner.textContent = "Draw!";
     }
   };
 
