@@ -12,16 +12,12 @@ const grid = (function () {
   const x1y2 = document.getElementById("x1y2");
   const x2y2 = document.getElementById("x2y2");
 
-  let XorO = {
-    x0y0: null, x1y0: null, x2y0: null,
-    x0y1: null, x1y1: null, x2y1: null,
-    x0y2: null, x1y2: null, x2y2: null
-  };
-
   let isPlayerX = true;
+  let won = false;
   const inputXorO = function (e) {
     const box = e.target;
-    if (box.tagName === "TD" && (box.textContent !== "X" && box.textContent !== "O")) {
+    console.log(won)
+    if (!won && box.textContent !== "X" && box.textContent !== "O") {
       if (isPlayerX) {
         box.textContent = "X";
         isPlayerX = false;
@@ -39,19 +35,25 @@ const grid = (function () {
         (x0y0.textContent === x0y1.textContent && x0y1.textContent === x0y2.textContent) ||
         (x0y0.textContent === x1y1.textContent && x1y1.textContent === x2y2.textContent))) {
       winner.textContent = `Player ${x0y0.textContent} won!`;
+      won = true;
     } else if (x0y1.textContent !== "#" && x0y1.textContent !== "" &&
       (x0y1.textContent === x1y1.textContent && x1y1.textContent === x2y1.textContent)) {
       winner.textContent = `Player ${x0y1.textContent} won!`;
+      won = true;
     } else if (x0y2.textContent !== "#" && x0y2.textContent !== "" &&
       (x0y2.textContent === x1y2.textContent && x1y2.textContent === x2y2.textContent)) {
       winner.textContent = `Player ${x0y2.textContent} won!`;
+      won = true;
     } else if (x1y0.textContent !== "#" && x1y0.textContent !== "" &&
       (x1y0.textContent === x1y1.textContent && x1y1.textContent === x1y2.textContent)) {
       winner.textContent = `Player ${x1y0.textContent} won!`;
+      won = true;
     } else if (x0y2.textContent !== "#" && x0y2.textContent !== "" &&
+      x2y0.textContent !== "#" && x2y0.textContent !== "" &&
       ((x2y0.textContent === x2y1.textContent && x2y1.textContent === x2y2.textContent) ||
         (x2y0.textContent === x1y1.textContent && x1y1.textContent === x0y2.textContent))) {
       winner.textContent = `Player ${x2y0.textContent} won!`;
+      won = true;
     } else if (x0y0.textContent !== "#" && x0y1.textContent !== "#" && x0y2.textContent !== "#" && x1y0.textContent !== "#" &&
       x1y1.textContent !== "#" && x1y2.textContent !== "#" && x2y0.textContent !== "#" && x2y1.textContent !== "#" && x2y2.textContent !== "#") {
       winner.textContent = "Draw!";
@@ -67,6 +69,10 @@ const grid = (function () {
 
 function checkPlayerInput() {
   document.getElementById("tictactoe").addEventListener("click", grid.inputXorO);
+}
+
+function resetGame() {
+
 }
 
 checkPlayerInput();
