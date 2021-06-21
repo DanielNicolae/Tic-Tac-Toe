@@ -60,9 +60,24 @@ const grid = (function () {
     }
   };
 
+  function reset() {
+    won = false;
+    winner.textContent = "";
+    x0y0.textContent = "#";
+    x0y1.textContent = "#";
+    x0y2.textContent = "#";
+    x1y0.textContent = "#";
+    x1y1.textContent = "#";
+    x1y2.textContent = "#";
+    x2y0.textContent = "#";
+    x2y1.textContent = "#";
+    x2y2.textContent = "#";
+  }
+
   return {
     inputXorO,
-    displayWinner
+    displayWinner,
+    reset
   };
 })();
 
@@ -72,7 +87,8 @@ function checkPlayerInput() {
 }
 
 function resetGame() {
-
+  document.getElementById("reset").addEventListener("click", grid.reset);
 }
 
 checkPlayerInput();
+resetGame();
